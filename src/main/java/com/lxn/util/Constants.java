@@ -7,4 +7,6 @@ package com.lxn.util;
 public class Constants {
     //储存用户信息的键
     public final static String USER_SESSION = "userSession";
+
+    public final static String SYS_MESSAGE = "message";
 }

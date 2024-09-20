@@ -6,6 +6,8 @@ import com.lxn.dao.user.UserDaoImpl;
 import com.lxn.pojo.User;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
 /**
  * @author ${Linxiaonan}
  * @create ${2024.9.11} ${00:26}
@@ -44,5 +46,32 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+
+
+    }
+
+    /**
+     * 修改密码实现
+     *
+     * @param id id
+     * @param pwd 密码
+     * @return
+     */
+    @Override
+    public Boolean updatePwd(int id, String pwd){
+        Connection connection = null;
+        boolean flag = false;
+        //修改密码
+        try{
+            connection = BaseDao.getConnection();
+            if (userDao.updatePwd(connection,id,pwd)>0){
+                flag = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            BaseDao.closeResourse(connection,null,null);
+        }
+        return flag;
     }
 }

@@ -13,12 +13,15 @@ $(function () {
     newpassword.next().html("*");
     rnewpassword.next().html("*");
 
+    //表示当用户离开（失去焦点）旧密码输入框时，会触发这个事件。
     oldpassword.on("blur", function () {
         $.ajax({
             type: "GET",
             url: path + "/jsp/user.do",
-            data: {method: "pwdmodify", oldpassword: oldpassword.val()}, //ajax传递的参数
+            //ajax传递的参数
+            data: {method: "pwdmodify", oldpassword: oldpassword.val()},
             dataType: "json",
+            //当请求成功且返回有效数据时执行。处理后端返回的数据。根据 data.result 的值来更新用户界面的提示信息
             success: function (data) {
                 if (data.result == "true") {//旧密码正确
                     validateTip(oldpassword.next(), {"color": "green"}, imgYes, true);
@@ -30,6 +33,7 @@ $(function () {
                     validateTip(oldpassword.next(), {"color": "red"}, imgNo + " 请输入旧密码", false);
                 }
             },
+            //当请求失败（无论是状态码还是网络问题）时执行
             error: function (data) {
                 //请求出错
                 validateTip(oldpassword.next(), {"color": "red"}, imgNo + " 请求错误", false);

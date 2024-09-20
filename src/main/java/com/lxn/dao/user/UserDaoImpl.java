@@ -14,8 +14,9 @@ import java.sql.SQLException;
  * @description 用户Dao层实现类
  */
 public class UserDaoImpl implements UserDao{
+    //得到要登录的用户
     @Override
-    public User getLoginUser(Connection connection, String userCode,String userPassword) {
+    public User getLoginUser(Connection connection, String userCode,String userPassword)throws SQLException {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         User user = null;
@@ -24,7 +25,7 @@ public class UserDaoImpl implements UserDao{
                 //查询编码和密码相同的用户
                 String sql = "select * from smbms_user where user_code = ? and user_password = ?";
                 Object[] params = {userCode,userPassword};
-                rs = BaseDao.execute(connection,sql,params,rs,pstm);
+                rs = BaseDao.execute(connection,pstm,sql,params,rs);
 
                 //如果用户存在，new一个user对象保存用户信息
                 if (rs.next()) {
@@ -50,5 +51,21 @@ public class UserDaoImpl implements UserDao{
             e.printStackTrace();
         }
         return user;
+    }
+
+    //修改当前用户密码
+    @Override
+    public int updatePwd(Connection connection,int id,String password) throws SQLException{
+        PreparedStatement pstm = null;
+        int execute = 0;
+        if (connection!=null) {
+            String sql = "update smbms_user set user_password = ? where id = ?";
+            Object params[] = {password, id};
+            //返回修改行数 不等于0即为修改成功
+            execute = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResourse(null,pstm,null);
+        }
+
+        return execute;
     }
 }
