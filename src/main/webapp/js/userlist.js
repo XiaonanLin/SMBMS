@@ -1,10 +1,14 @@
 var userObj;
 
 //用户管理页面上点击删除按钮弹出删除框(userlist.jsp)
+/*obj 是一个 jQuery 对象，通常是在某个事件处理程序中传递的。它代表了触发删除操作的 DOM 元素，比如一个删除按钮。
+当用户点击这个按钮时，obj 就指向这个按钮，允许你访问它的属性（如 userid 和 username）以及其父元素（如表格行）*/
 function deleteUser(obj){
 	$.ajax({
 		type:"GET",
 		url:path+"/jsp/user.do",
+
+		//uid: obj.attr("userid") 是将 obj 的 userid 属性值作为参数传递给服务器
 		data:{method:"deluser",uid:obj.attr("userid")},
 		dataType:"json",
 		success:function(data){

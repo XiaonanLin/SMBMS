@@ -9,8 +9,8 @@ import java.util.Date;
  */
 public class Role {
     private Integer id;
-    private String userCode;
-    private String userName;
+    private String roleCode;
+    private String roleName;
 
     private Integer createBy;
     private Date createDate;
@@ -25,10 +25,10 @@ public class Role {
     public Role() {
     }
 
-    public Role(Integer id, String userCode, String userName, Integer createBy, Date createDate, Integer modifyBy, Date modifyDate, Integer userId) {
+    public Role(Integer id, String roleCode, String roleName, Integer createBy, Date createDate, Integer modifyBy, Date modifyDate, Integer userId) {
         this.id = id;
-        this.userCode = userCode;
-        this.userName = userName;
+        this.roleCode = roleCode;
+        this.roleName = roleName;
         this.createBy = createBy;
         this.createDate = createDate;
         this.modifyBy = modifyBy;
@@ -54,34 +54,34 @@ public class Role {
 
     /**
      * 获取
-     * @return userCode
+     * @return roleCode
      */
-    public String getUserCode() {
-        return userCode;
+    public String getRoleCode() {
+        return roleCode;
     }
 
     /**
      * 设置
-     * @param userCode 角色编码
+     * @param roleCode 角色编码
      */
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     /**
      * 获取
-     * @return userName
+     * @return roleName
      */
-    public String getUserName() {
-        return userName;
+    public String getRoleName() {
+        return roleName;
     }
 
     /**
      * 设置
-     * @param userName 用户名称
+     * @param roleName 角色名称
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     /**
@@ -166,6 +166,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role{id = " + id + ", userCode = " + userCode + ", userName = " + userName + ", createBy = " + createBy + ", createDate = " + createDate + ", modifyBy = " + modifyBy + ", modifyDate = " + modifyDate + ", userId = " + userId + "}";
+        return "Role{id = " + id + ", roleCode = " + roleCode + ", roleName = " + roleName + ", createBy = " + createBy + ", createDate = " + createDate + ", modifyBy = " + modifyBy + ", modifyDate = " + modifyDate + ", userId = " + userId + "}";
     }
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="/jsp/common/head.jsp" %>
+
+
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
@@ -74,6 +76,7 @@
             </tr>
         </c:forEach>
     </table>
+
     <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
     <c:import url="rollpage.jsp">
         <c:param name="totalCount" value="${totalCount}"/>
