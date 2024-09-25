@@ -50,7 +50,7 @@
 					</td>
 					<td>
 					<span>
-					<fmt:formatDate value="${provider.creationDate}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${provider.createDate}" pattern="yyyy-MM-dd"/>
 					</span>
 					</td>
 					<td>

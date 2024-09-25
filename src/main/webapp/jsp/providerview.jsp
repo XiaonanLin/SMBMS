@@ -12,7 +12,7 @@
             <p><strong>联系人：</strong><span>${provider.proContact }</span></p>
             <p><strong>联系电话：</strong><span>${provider.proPhone }</span></p>
             <p><strong>传真：</strong><span>${provider.proFax }</span></p>
-            <p><strong>描述：</strong><span>${provider.proDesc}</span></p>
+            <p><strong>描述：</strong><span>${provider.proDetail}</span></p>
 			<div class="providerAddBtn">
             	<input type="button" id="back" name="back" value="返回" >
             </div>

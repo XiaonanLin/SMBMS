@@ -9,6 +9,11 @@
       </div>
       <div class="providerAdd">
           <form id="providerForm" name="providerForm" method="post" action="${pageContext.request.contextPath }/jsp/provider.do">
+              <input type="hidden" name="method" value="modifysave">
+
+
+
+              <input type="hidden" name="id" value="${provider.id}">
               <!--div的class 为error是验证错误，ok是验证成功-->
               <div class="">
                   <label for="proCode">供应商编码：</label>
@@ -44,7 +49,7 @@
               
               <div>
                   <label for="proDesc">描述：</label>
-                  <input type="text" name="proDesc" id="proDesc" value="${provider.proDesc }"> 
+                  <input type="text" name="proDesc" id="proDesc" value="${provider.proDetail }">
               </div>
               <div class="providerAddBtn">
                   <input type="button" name="save" id="save" value="保存">
