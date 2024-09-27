@@ -19,7 +19,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao{
     //得到要登录的用户
     @Override
-    public User getLoginUser(Connection connection, String userCode)throws SQLException {
+    public User getLoginUser(Connection connection, String userCode){
         PreparedStatement pstm = null;
         ResultSet rs = null;
         User user = null;
@@ -58,12 +58,12 @@ public class UserDaoImpl implements UserDao{
 
     //修改当前用户密码
     @Override
-    public int updatePwd(Connection connection,int id,String password) throws SQLException{
+    public int updatePwd(Connection connection,int id,String password){
         PreparedStatement pstm = null;
         int execute = 0;
         if (connection!=null) {
             String sql = "update smbms_user set user_password = ? where id = ?";
-            Object params[] = {password, id};
+            Object []params= {password, id};
             //返回修改行数 不等于0即为修改成功
             execute = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResourse(null,pstm,null);
@@ -84,7 +84,7 @@ public class UserDaoImpl implements UserDao{
             //通过 AS count 给聚合函数的结果起了个别名，数据库会在 ResultSet 中用这个别名作为列名
             sql.append("select count(1) as count from smbms_user u,smbms_role r where u.user_role = r.id");
             //List用来储存参数
-            List<Object> list = new ArrayList();
+            List<Object> list = new ArrayList<>();
             if (!StringUtils.isNullOrEmpty(userName)){
                 //模糊查询 要实现模糊查询需要加%
                 sql.append(" and u.user_name like ?");
@@ -172,7 +172,7 @@ public class UserDaoImpl implements UserDao{
 
     //通过userId删除user
     @Override
-    public int deleteUserById(Connection connection, Integer delId) throws Exception{
+    public int deleteUserById(Connection connection, Integer delId){
         PreparedStatement pstm = null;
         int flag = 0;
         if (null!=connection){

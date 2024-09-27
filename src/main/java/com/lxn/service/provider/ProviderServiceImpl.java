@@ -9,7 +9,6 @@ import com.lxn.pojo.Provider;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -69,6 +68,7 @@ public class ProviderServiceImpl implements ProviderService{
     }
 
     //通过proId删除Provider
+    @Override
     public int deleteProviderById(String delId){
         Connection connection = null;
         int billcount = -1;
@@ -117,7 +117,7 @@ public class ProviderServiceImpl implements ProviderService{
 
     //通过proId获取Provider
     @Override
-    public Provider getProviderById(String id) throws Exception{
+    public Provider getProviderById(String id){
         Connection connection = null;
         Provider provider = null;
         try{

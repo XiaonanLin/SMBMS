@@ -22,13 +22,7 @@ public class UserServiceImpl implements UserService {
         userDao = new UserDaoImpl();
     }
 
-    /**
-     * 用户登录实现
-     *
-     * @param userCode 用户名
-     * @param userPassword 用户密码
-     * @return
-     */
+    //用户登录实现
     @Override
     public User login(String userCode, String userPassword) {
         Connection connection = null;
@@ -56,13 +50,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    /**
-     * 修改密码实现
-     *
-     * @param id id
-     * @param pwd 密码
-     * @return
-     */
+    //修改密码实现
     @Override
     public Boolean updatePwd(int id, String pwd){
         Connection connection = null;

@@ -1,7 +1,6 @@
 package com.lxn.servlet.provider;
 
 import com.alibaba.fastjson.JSONArray;
-import com.lxn.dao.BaseDao;
 import com.lxn.pojo.Provider;
 import com.lxn.pojo.User;
 import com.lxn.service.provider.ProviderService;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,17 +33,17 @@ public class ProviderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String method = req.getParameter("method");
-        if (method != null && method.equals("query")) {
+        if ("query".equals(method)) {
             this.query(req, resp);
-        } else if (method != null && method.equals("add")) {
+        } else if ("add".equals(method)) {
             this.add(req, resp);
-        } else if (method != null && method.equals("delprovider")) {
+        } else if ("delprovider".equals(method)) {
             this.delProvider(req, resp);
-        } else if (method != null && method.equals("modify")) {
+        } else if ("modify".equals(method)) {
             this.getProviderById(req,resp, "providermodify.jsp");
-        } else if (method != null && method.equals("modifysave")) {
+        } else if ("modifysave".equals(method)) {
             this.modify(req,resp);
-        } else if (method != null && method.equals("view")) {
+        } else if ("view".equals(method)) {
             this.getProviderById(req,resp, "providerview.jsp");
         }
     }
@@ -88,7 +86,7 @@ public class ProviderServlet extends HttpServlet {
         provider.setCreateBy(((User) req.getSession().getAttribute(Constants.USER_SESSION)).getId());
         provider.setCreateDate(new Date());
 
-        Boolean flag = false;
+        boolean flag = false;
         ProviderService providerService = new ProviderServiceImpl();
         flag = providerService.add(provider);
         if (flag){
@@ -98,7 +96,7 @@ public class ProviderServlet extends HttpServlet {
         }
     }
 
-    private void delProvider(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void delProvider(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("proid");
         HashMap<String,String> resultMap = new HashMap<>();
         if (!StringUtils.isNullOrEmpty(id)){

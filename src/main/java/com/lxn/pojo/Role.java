@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author ${Linxiaonan}
  * @create ${2024.9.9} ${23:17}
- * @description User实体类
+ * @description Role实体类
  */
 public class Role {
     private Integer id;

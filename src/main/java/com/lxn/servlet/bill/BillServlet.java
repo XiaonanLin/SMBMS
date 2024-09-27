@@ -38,19 +38,19 @@ public class BillServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String method = req.getParameter("method");
-        if (method != null && method.equals("query")) {
+        if ("query".equals(method)) {
             this.query(req, resp);
-        } else if (method != null && method.equals("add")) {
+        } else if ("add".equals(method)) {
             this.add(req, resp);
-        } else if (method != null && method.equals("getproviderlist")) {
+        } else if ("getproviderlist".equals(method)) {
             this.getProviderlist(req, resp);
-        } else if (method != null && method.equals("delbill")) {
+        } else if ("delbill".equals(method)) {
             this.delBill(req, resp);
-        } else if (method != null && method.equals("view")) {
+        } else if ("view".equals(method)) {
             this.getBillById(req, resp, "billview.jsp");
-        }else if (method != null && method.equals("modify")) {
+        }else if ("modify".equals(method)) {
             this.getBillById(req, resp, "billmodify.jsp");
-        } else if (method != null && method.equals("modifysave")) {
+        } else if ("modifysave".equals(method)) {
             this.modify(req, resp);
         }
     }
@@ -58,9 +58,8 @@ public class BillServlet extends HttpServlet {
     private void query(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Provider> providerList = new ArrayList<Provider>();
         ProviderService providerService = new ProviderServiceImpl();
-        providerList = providerService.getProviderList("", "");
+        List<Provider> providerList = providerService.getProviderList("", "");
         request.setAttribute("providerList", providerList);
 
         String queryProductName = request.getParameter("queryProductName");
@@ -70,7 +69,6 @@ public class BillServlet extends HttpServlet {
             queryProductName = "";
         }
 
-        List<Bill> billList = new ArrayList<Bill>();
         BillService billService = new BillServiceImpl();
         Bill bill = new Bill();
 
@@ -92,8 +90,8 @@ public class BillServlet extends HttpServlet {
         System.out.println(queryProviderId);
         System.out.println(queryIsPayment);
 
-        billList = billService.getBillList(bill);
-        System.out.println(billList);
+        List<Bill> billList = billService.getBillList(bill);
+
         request.setAttribute("billList", billList);
         request.setAttribute("queryProductName", queryProductName);
         request.setAttribute("queryProviderId", queryProviderId);
@@ -138,9 +136,9 @@ public class BillServlet extends HttpServlet {
 
     //获取供应商列表
     private void getProviderlist(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
 
-        List<Provider> providerList = new ArrayList<Provider>();
+        List<Provider> providerList = new ArrayList<>();
         ProviderService providerService = new ProviderServiceImpl();
         providerList = providerService.getProviderList("", "");
 
@@ -154,7 +152,7 @@ public class BillServlet extends HttpServlet {
 
     //通过delId删除bill
     private void delBill(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String id = request.getParameter("billid");
         HashMap<String, String> resultMap = new HashMap<>();
         if (!StringUtils.isNullOrEmpty(id)) {
@@ -181,8 +179,7 @@ public class BillServlet extends HttpServlet {
         String id = request.getParameter("billid");
         if (!StringUtils.isNullOrEmpty(id)) {
             BillService billService = new BillServiceImpl();
-            Bill bill = null;
-            bill = billService.getBillById(id);
+            Bill bill = billService.getBillById(id);
             request.setAttribute("bill", bill);
             request.getRequestDispatcher(url).forward(request, response);
         }

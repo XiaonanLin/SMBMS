@@ -2,7 +2,6 @@ package com.lxn.service.bill;
 
 import com.lxn.pojo.Bill;
 
-import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -12,17 +11,17 @@ import java.util.List;
  */
 public interface BillService {
     //通过条件获取订单列表
-    public List<Bill> getBillList(Bill bill);
+    List<Bill> getBillList(Bill bill);
 
     //增加订单
-    public boolean add(Bill bill);
+    boolean add(Bill bill);
 
     //通过delId删除Bill
-    public Boolean deleteBillById(String delId);
+    Boolean deleteBillById(String delId);
 
     //通过id获取订单信息
-    public Bill getBillById(String id);
+    Bill getBillById(String id);
 
     //修改订单信息
-    public Boolean modify(Bill bill);
+    Boolean modify(Bill bill);
 }

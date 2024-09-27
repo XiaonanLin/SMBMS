@@ -2,7 +2,6 @@ package com.lxn.dao.provider;
 
 import com.lxn.dao.BaseDao;
 import com.lxn.pojo.Provider;
-import com.lxn.pojo.User;
 import com.mysql.cj.util.StringUtils;
 
 import java.sql.Connection;
@@ -76,7 +75,7 @@ public class ProviderDaoImpl implements ProviderDao{
 
     //通过proId删除Provider
     @Override
-    public int deleteProviderById(Connection connection, String delId) throws Exception{
+    public int deleteProviderById(Connection connection, String delId){
         PreparedStatement pstm = null;
         int flag = 0;
         if (null!=connection){

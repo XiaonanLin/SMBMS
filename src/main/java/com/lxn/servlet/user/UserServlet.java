@@ -29,25 +29,25 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String method = req.getParameter("method");
 
-        if (method!=null && method.equals("savepwd")){
+        if ("savepwd".equals(method)){
             this.updatePwd(req,resp);
-        }else if (method!=null && method.equals("pwdmodify")){
+        }else if ("pwdmodify".equals(method)){
             this.getPwdByUserId(req, resp);
-        }else if (method!=null && method.equals("query")) {
+        }else if ("query".equals(method)) {
             this.query(req,resp);
-        }else if(method!=null && method.equals("getrolelist")){
+        }else if("getrolelist".equals(method)){
             this.getRoleList(req, resp);
-        }else if (method!=null && method.equals("add")){
+        }else if ("add".equals(method)){
             this.add(req, resp);
-        }else if (method!=null && method.equals("ucexist")) {
+        }else if ("ucexist".equals(method)) {
             this.userCodeExist(req, resp);
-        }else if (method!=null && method.equals("deluser")) {
+        }else if ("deluser".equals(method)) {
             this.delUser(req, resp);
-        }else if (method != null && method.equals("modifyexe")) {
+        }else if ("modifyexe".equals(method)) {
             this.modify(req,resp);
-        } else if (method !=null && method.equals("modify")) {
+        } else if ("modify".equals(method)) {
             this.getUserById(req,resp,"usermodify.jsp");
-        } else if (method != null && method.equals("view")) {
+        } else if ("view".equals(method)) {
             this.getUserById(req,resp,"userview.jsp");
         }
     }
@@ -80,10 +80,10 @@ public class UserServlet extends HttpServlet {
     }
 
     //校对输入的旧密码正确
-    private void getPwdByUserId(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{
+    private void getPwdByUserId(HttpServletRequest req,HttpServletResponse resp)throws IOException{
         Object o = req.getSession().getAttribute(Constants.USER_SESSION);
         String oldpassword = req.getParameter("oldpassword");
-        Map<String,String> resultMap = new HashMap();
+        Map<String,String> resultMap = new HashMap<>();
 
         if (null == o){
             //session过期
@@ -141,7 +141,7 @@ public class UserServlet extends HttpServlet {
         }
         //前端是下拉框选择角色，所以不会传null；如果是空字符串，等于没有选择特定角色
         //如果前端选择了角色就会通过
-        if (temp !=null && !temp.equals("")){
+        if (temp !=null && !temp.isEmpty()){
             //将String转化为int
             queryUserRole = Integer.parseInt(temp);
         }
@@ -237,7 +237,7 @@ public class UserServlet extends HttpServlet {
     }
 
     //获取角色列表
-    private void getRoleList (HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+    private void getRoleList (HttpServletRequest request,HttpServletResponse response)throws IOException {
         List<Role> roleList = null;
         RoleService roleService = new RoleServiceImpl();
         roleList = roleService.getRoleList();
@@ -250,7 +250,7 @@ public class UserServlet extends HttpServlet {
     }
 
     //判断用户是否已经存在
-    private void userCodeExist(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+    private void userCodeExist(HttpServletRequest request,HttpServletResponse response)throws IOException {
         String userCode = request.getParameter("userCode");
 
         HashMap<String,String> resultMap = new HashMap<>();
@@ -276,7 +276,7 @@ public class UserServlet extends HttpServlet {
     }
 
     //通过userId删除user
-    private void delUser(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+    private void delUser(HttpServletRequest request,HttpServletResponse response)throws IOException {
         String id = request.getParameter("uid");
         Integer delId = 0;
         try{

@@ -1,7 +1,11 @@
 package com.lxn.pojo;
 
 import java.util.Date;
-
+/**
+ * @author ${Linxiaonan}
+ * @create ${2024.9.9} ${23:17}
+ * @description Provider实体类
+ */
 public class Provider {
     private Integer id;
     private String proCode;

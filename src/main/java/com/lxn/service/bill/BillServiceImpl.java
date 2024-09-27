@@ -92,7 +92,6 @@ public class BillServiceImpl implements BillService{
             bill = billDao.getBillById(connection, id);
         } catch (Exception e) {
             e.printStackTrace();
-            bill = null;
         } finally {
             BaseDao.closeResourse(connection, null, null);
         }

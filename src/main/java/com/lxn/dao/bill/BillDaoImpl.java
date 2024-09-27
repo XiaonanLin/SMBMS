@@ -39,11 +39,11 @@ public class BillDaoImpl implements BillDao{
     public List<Bill> getBillList(Connection connection, Bill bill) throws Exception{
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Bill> billList = new ArrayList<Bill>();
+        List<Bill> billList = new ArrayList<>();
         if (connection != null) {
             StringBuffer sql = new StringBuffer();
             sql.append("select b.*,p.pro_name as providerName from smbms_bill b, smbms_provider p where b.provider_id = p.id");
-            List<Object> list = new ArrayList<Object>();
+            List<Object> list = new ArrayList<>();
             if (!StringUtils.isNullOrEmpty(bill.getProductName())) {
                 sql.append(" and product_name like ?");
                 list.add("%" + bill.getProductName() + "%");
@@ -97,7 +97,7 @@ public class BillDaoImpl implements BillDao{
 
     @Override
     //通过delId删除Bill
-    public int deleteBillById(Connection connection, String delId) throws Exception{
+    public int deleteBillById(Connection connection, String delId){
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
