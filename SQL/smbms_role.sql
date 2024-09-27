@@ -1,0 +1,3 @@
+INSERT INTO `smbms_role` (`id`, `role_code`, `role_name`, `create_by`, `create_date`, `modify_by`, `modify_date`, `user_id`) VALUES (1, 'SMBMS_ADMIN', '系统管理员', 1, '2016-04-13 00:00:00', NULL, NULL, NULL);
+INSERT INTO `smbms_role` (`id`, `role_code`, `role_name`, `create_by`, `create_date`, `modify_by`, `modify_date`, `user_id`) VALUES (2, 'SMBMS_MANAGER', '经理', 1, '2016-04-13 00:00:00', NULL, NULL, NULL);
+INSERT INTO `smbms_role` (`id`, `role_code`, `role_name`, `create_by`, `create_date`, `modify_by`, `modify_date`, `user_id`) VALUES (3, 'SMBMS_EMPLOYEE', '普通员工', 1, '2016-04-13 00:00:00', NULL, NULL, NULL);
