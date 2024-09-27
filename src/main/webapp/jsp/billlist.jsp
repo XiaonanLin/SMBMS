@@ -68,7 +68,7 @@
 					</td>
 					<td>
 					<span>
-					<fmt:formatDate value="${bill.creationDate}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${bill.createDate}" pattern="yyyy-MM-dd"/>
 					</span>
 					</td>
 					<td>

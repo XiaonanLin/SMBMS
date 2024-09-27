@@ -1,5 +1,6 @@
 package com.lxn.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -14,9 +15,9 @@ public class Bill {
     private String productDetail;
 
     private String productUnit;
-    private String productCount;
+    private BigDecimal productCount;
 
-    private Integer totalPrice;
+    private BigDecimal totalPrice;
 
     private Integer isPayment;
 
@@ -35,7 +36,7 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Integer id, String billCode, String productName, String productDetail, String productUnit, String productCount, Integer totalPrice, Integer isPayment, Integer createBy, Date createDate, Integer modifyBy, Date modifyDate, Integer providerId, String providerName) {
+    public Bill(Integer id, String billCode, String productName, String productDetail, String productUnit, BigDecimal productCount, BigDecimal totalPrice, Integer isPayment, Integer createBy, Date createDate, Integer modifyBy, Date modifyDate, Integer providerId, String providerName) {
         this.id = id;
         this.billCode = billCode;
         this.productName = productName;
@@ -136,7 +137,7 @@ public class Bill {
      * 获取
      * @return productCount
      */
-    public String getProductCount() {
+    public BigDecimal getProductCount() {
         return productCount;
     }
 
@@ -144,7 +145,7 @@ public class Bill {
      * 设置
      * @param productCount 商品数量
      */
-    public void setProductCount(String productCount) {
+    public void setProductCount(BigDecimal productCount) {
         this.productCount = productCount;
     }
 
@@ -152,7 +153,7 @@ public class Bill {
      * 获取
      * @return totalPrice
      */
-    public Integer getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
@@ -160,7 +161,7 @@ public class Bill {
      * 设置
      * @param totalPrice 商品总额
      */
-    public void setTotalPrice(Integer totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

@@ -62,6 +62,15 @@
     <url-pattern>/jsp/provider.do</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>BillServlet</servlet-name>
+    <servlet-class>com.lxn.servlet.bill.BillServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BillServlet</servlet-name>
+    <url-pattern>/jsp/bill.do</url-pattern>
+  </servlet-mapping>
+
   <!--设置欢迎页面-->
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
